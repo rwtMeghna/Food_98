@@ -1,12 +1,16 @@
-import React ,{useState} from 'react'
+import React ,{useState ,useEffect} from 'react'
 import {AiOutlineMenu ,AiOutlineSearch , AiOutlineClose ,AiFillTag} from "react-icons/ai";
 import {BsFillCartFill , BsFillSaveFill} from "react-icons/bs"
 import {TbTruckDelivery} from "react-icons/tb";
 import {FaUserFriends, FaWallet} from 'react-icons/fa'
 import {MdFavorite, MdHelp} from 'react-icons/md'
-
+import Aos from'aos';
+import 'aos/dist/aos.css';
 
 function Navbar() {
+  useEffect(()=>{
+    Aos.init({duration:3000})
+  },[]);
 
   const [nav  , setNav]=useState(false);
   return (
@@ -16,7 +20,7 @@ function Navbar() {
         <div onClick={()=>setNav(!nav)} className='cursor-pointer'>
             <AiOutlineMenu size={30}/>
             </div>
-           <h1 className='text-2xl sm:text-3xl lg:text-4xl px-2'>Best <span className='font-bold'>Eats</span></h1>
+           <h1  data-aos="fade-up" className='text-2xl sm:text-3xl lg:text-4xl px-2'>Best <span className='font-bold'>Eats</span></h1>
            <div className='hidden lg:flex items-center bg-gray-200 p-1 border-black rounded-full text-[14px] font-bold'>
             <p className='bg-black text-white rounded-full p-2'>Delivery</p>
             <p className='p-2'>Pickup</p>
@@ -31,7 +35,7 @@ function Navbar() {
         <input  className="bg-transparent p-2 focus:outline-none w-full h-22" type="text" placeholder='Search Food' />
         </div>
 
-        <div>
+        <div data-aos="fade-right">
           <button className= 'bg-black text-white font-bold flex items-center gap-3 rounded-xl px-5 py-2'>
             <BsFillCartFill className='size{50}'/>Cart
           </button> 
